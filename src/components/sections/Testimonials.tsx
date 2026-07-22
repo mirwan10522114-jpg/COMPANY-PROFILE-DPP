@@ -115,7 +115,7 @@ export default function Testimonials() {
           })}
         </motion.div>
 
-        {/* Main testimonial carousel */}
+        {/* Main testimonial carousel — fixed height card */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -131,7 +131,8 @@ export default function Testimonials() {
             strokeWidth={1}
           />
 
-          <div className="relative bg-white rounded-3xl shadow-2xl shadow-sky-900/10 border border-sky-100 overflow-hidden">
+          {/* FIXED-HEIGHT card — frame tidak akan berubah saat slide */}
+          <div className="relative bg-white rounded-3xl shadow-2xl shadow-sky-900/10 border border-sky-100 overflow-hidden h-[640px] sm:h-[560px] lg:h-[500px]">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={testimonial.id}
@@ -140,10 +141,10 @@ export default function Testimonials() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: direction > 0 ? -50 : 50 }}
                 transition={{ duration: 0.4 }}
-                className="grid lg:grid-cols-2 gap-0"
+                className="grid lg:grid-cols-2 gap-0 h-full"
               >
-                {/* Left: Project Image */}
-                <div className="relative h-72 sm:h-96 lg:h-full min-h-[400px] overflow-hidden">
+                {/* Left: Project Image — fixed height, never stretches */}
+                <div className="relative h-[260px] sm:h-[300px] lg:h-full overflow-hidden shrink-0">
                   <img
                     src={testimonial.projectImage}
                     alt={testimonial.projectTitle}
@@ -161,7 +162,7 @@ export default function Testimonials() {
 
                   {/* Project info overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 text-white">
-                    <h3 className="text-xl lg:text-2xl font-bold leading-tight">
+                    <h3 className="text-xl lg:text-2xl font-bold leading-tight line-clamp-2">
                       {testimonial.projectTitle}
                     </h3>
                     <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-sky-100">
@@ -180,10 +181,10 @@ export default function Testimonials() {
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-transparent rounded-bl-full" />
                 </div>
 
-                {/* Right: Client info + Testimonial */}
-                <div className="p-6 lg:p-10 flex flex-col justify-between">
-                  {/* Rating */}
-                  <div className="flex items-center gap-1 mb-5">
+                {/* Right: Client info + Testimonial — fixed height, flex column with scrollable quote */}
+                <div className="p-6 lg:p-8 flex flex-col h-[380px] sm:h-[260px] lg:h-full overflow-hidden">
+                  {/* Rating — top, fixed */}
+                  <div className="flex items-center gap-1 mb-4 shrink-0">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <motion.div
                         key={i}
@@ -205,16 +206,20 @@ export default function Testimonials() {
                     </span>
                   </div>
 
-                  {/* Quote */}
-                  <div className="relative">
-                    <Quote className="w-10 h-10 text-cyan-200 mb-3 fill-cyan-100" />
+                  {/* Quote — flex-1, scrollable if too long */}
+                  <div className="relative flex-1 min-h-0 overflow-y-auto pr-2 mb-4
+                                  [&::-webkit-scrollbar]:w-1.5
+                                  [&::-webkit-scrollbar-thumb]:bg-cyan-200
+                                  [&::-webkit-scrollbar-thumb]:rounded-full
+                                  [&::-webkit-scrollbar-track]:bg-transparent">
+                    <Quote className="w-8 h-8 text-cyan-200 mb-2 fill-cyan-100 shrink-0" />
                     <blockquote className="text-slate-700 text-sm lg:text-base leading-relaxed">
                       &ldquo;{testimonial.testimonial}&rdquo;
                     </blockquote>
                   </div>
 
-                  {/* Client info */}
-                  <div className="mt-6 pt-6 border-t border-slate-100 flex items-center gap-4">
+                  {/* Client info — bottom, fixed */}
+                  <div className="pt-5 border-t border-slate-100 flex items-center gap-4 shrink-0">
                     <div className="relative shrink-0">
                       <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-sky-600 rounded-full blur-sm opacity-50" />
                       <img
@@ -230,10 +235,10 @@ export default function Testimonials() {
                       </div>
                     </div>
                     <div className="min-w-0">
-                      <div className="font-bold text-sky-950 text-base lg:text-lg">
+                      <div className="font-bold text-sky-950 text-base lg:text-lg line-clamp-1">
                         {testimonial.clientName}
                       </div>
-                      <div className="text-sm text-slate-500 mt-0.5">
+                      <div className="text-sm text-slate-500 mt-0.5 line-clamp-1">
                         {testimonial.clientRole}
                       </div>
                     </div>
@@ -246,20 +251,20 @@ export default function Testimonials() {
           {/* Navigation arrows */}
           <button
             onClick={goPrev}
-            className="absolute top-1/2 -translate-y-1/2 -left-3 lg:-left-6 w-12 h-12 rounded-full bg-white shadow-xl border border-sky-100 flex items-center justify-center text-sky-700 hover:bg-sky-50 hover:scale-110 transition-all z-10"
+            className="absolute top-[260px] sm:top-[300px] lg:top-1/2 -translate-y-1/2 -left-3 lg:-left-6 w-12 h-12 rounded-full bg-white shadow-xl border border-sky-100 flex items-center justify-center text-sky-700 hover:bg-sky-50 hover:scale-110 transition-all z-10"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={goNext}
-            className="absolute top-1/2 -translate-y-1/2 -right-3 lg:-right-6 w-12 h-12 rounded-full bg-white shadow-xl border border-sky-100 flex items-center justify-center text-sky-700 hover:bg-sky-50 hover:scale-110 transition-all z-10"
+            className="absolute top-[260px] sm:top-[300px] lg:top-1/2 -translate-y-1/2 -right-3 lg:-right-6 w-12 h-12 rounded-full bg-white shadow-xl border border-sky-100 flex items-center justify-center text-sky-700 hover:bg-sky-50 hover:scale-110 transition-all z-10"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Dots indicator + counter */}
+          {/* Dots indicator */}
           <div className="flex items-center justify-center gap-2 mt-8">
             {TESTIMONIALS.map((_, idx) => (
               <button
