@@ -11,9 +11,10 @@ import {
   Send,
   MessageCircle,
 } from "lucide-react";
-import { COMPANY } from "@/lib/data";
+import { useContentStore } from "@/lib/content-store";
 
 export default function Contact() {
+  const company = useContentStore((s) => s.company);
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -39,13 +40,13 @@ export default function Contact() {
 ${form.message}
 
 Mohon segera dihubungi. Terima kasih.`;
-    const waUrl = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
+    const waUrl = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
       text
     )}`;
     window.open(waUrl, "_blank");
   };
 
-  const directWa = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
+  const directWa = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
     "Halo Dunia Pool & Pond, saya ingin konsultasi proyek kolam."
   )}`;
 
@@ -53,9 +54,9 @@ Mohon segera dihubungi. Terima kasih.`;
     {
       icon: MapPin,
       label: "Alamat",
-      value: COMPANY.currentAddress,
+      value: company.currentAddress,
       href: `https://maps.google.com/?q=${encodeURIComponent(
-        COMPANY.currentAddress
+        company.currentAddress
       )}`,
       color: "text-rose-500",
       bg: "bg-rose-50",
@@ -63,7 +64,7 @@ Mohon segera dihubungi. Terima kasih.`;
     {
       icon: Phone,
       label: "Telepon / WhatsApp",
-      value: COMPANY.phone,
+      value: company.phone,
       href: directWa,
       color: "text-emerald-500",
       bg: "bg-emerald-50",
@@ -71,24 +72,24 @@ Mohon segera dihubungi. Terima kasih.`;
     {
       icon: Mail,
       label: "Email",
-      value: COMPANY.email,
-      href: `mailto:${COMPANY.email}`,
+      value: company.email,
+      href: `mailto:${company.email}`,
       color: "text-amber-500",
       bg: "bg-amber-50",
     },
     {
       icon: Instagram,
       label: "Instagram",
-      value: COMPANY.instagram,
-      href: COMPANY.instagramUrl,
+      value: company.instagram,
+      href: company.instagramUrl,
       color: "text-pink-500",
       bg: "bg-pink-50",
     },
     {
       icon: Globe,
       label: "Website",
-      value: COMPANY.website,
-      href: COMPANY.websiteUrl,
+      value: company.website,
+      href: company.websiteUrl,
       color: "text-sky-500",
       bg: "bg-sky-50",
     },
@@ -167,7 +168,7 @@ Mohon segera dihubungi. Terima kasih.`;
               <iframe
                 title="Lokasi Dunia Pool & Pond"
                 src={`https://www.google.com/maps?q=${encodeURIComponent(
-                  COMPANY.currentAddress
+                  company.currentAddress
                 )}&output=embed`}
                 width="100%"
                 height="240"

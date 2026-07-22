@@ -13,6 +13,7 @@ import {
   Building2,
 } from "lucide-react";
 import { STATS, COMPANY } from "@/lib/data";
+import { useContentStore } from "@/lib/content-store";
 
 // Animated counter
 function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
@@ -72,6 +73,8 @@ const MILESTONES = [
 ];
 
 export default function About() {
+  const about = useContentStore((s) => s.about);
+  const company = useContentStore((s) => s.company);
   return (
     <section
       id="tentang"
@@ -124,7 +127,7 @@ export default function About() {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/20 aspect-[4/5] sm:aspect-[5/4] border-4 border-white/10">
               <img
-                src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=1200&q=80"
+                src={about.image}
                 alt="Proyek kolam renang villa oleh Dunia Pool & Pond"
                 className="w-full h-full object-cover"
               />
@@ -189,30 +192,13 @@ export default function About() {
             className="order-1 lg:order-2"
           >
             <p className="text-sky-100/90 text-base lg:text-lg leading-relaxed">
-              <span className="font-semibold text-white">Dunia Pool & Pond</span>{" "}
-              lahir pada{" "}
-              <span className="font-semibold text-cyan-300">
-                {COMPANY.establishedDate}
-              </span>{" "}
-              di {COMPANY.establishedLocation} — bermula dari tekad seorang
-              pengusaha lokal untuk menghadirkan konstruksi kolam renang yang
-              benar-benar berkualitas di tengah pasar yang saat itu masih minim
-              standar.
+              {about.paragraph1}
             </p>
             <p className="text-sky-100/90 text-base lg:text-lg leading-relaxed mt-4">
-              Selama lebih dari 25 tahun, kami bertumbuh dari kontraktor lokal
-              menjadi solusi end-to-end berskala nasional: mulai dari konsultasi
-              desain awal, pembangunan struktur, instalasi sistem sirkulasi,
-              hingga perawatan berkala dan purna jual.
+              {about.paragraph2}
             </p>
             <p className="text-sky-100/90 text-base lg:text-lg leading-relaxed mt-4">
-              Lebih dari 1.000 proyek kolam telah kami selesaikan di seluruh
-              Indonesia — bukti nyata kepercayaan yang dibangun proyek demi
-              proyek. Kemitraan resmi kami bersama{" "}
-              <span className="font-semibold text-white">
-                {COMPANY.partner}, {COMPANY.partnerOrigin}
-              </span>{" "}
-              memastikan standar internasional hadir di setiap detail pekerjaan.
+              {about.paragraph3}
             </p>
 
             {/* Inline stats — colorful cards */}

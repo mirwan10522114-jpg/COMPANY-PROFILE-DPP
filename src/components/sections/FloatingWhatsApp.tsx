@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X } from "lucide-react";
-import { COMPANY } from "@/lib/data";
+import { useContentStore } from "@/lib/content-store";
 
 export default function FloatingWhatsApp() {
+  const company = useContentStore((s) => s.company);
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -16,8 +17,8 @@ export default function FloatingWhatsApp() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const waLink = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
-    "Halo Dunia Pool & Pond, saya ingin berkonsultasi tentang proyek kolam renang."
+  const waLink = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+    "Halo " + company.name + ", saya ingin berkonsultasi tentang proyek kolam renang."
   )}`;
 
   return (

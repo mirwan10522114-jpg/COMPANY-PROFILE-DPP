@@ -1,11 +1,14 @@
 "use client";
 
-import { Waves, MapPin, Phone, Mail, Instagram, Globe, Award, Lock } from "lucide-react";
-import { COMPANY, NAV_LINKS } from "@/lib/data";
+import { Waves, MapPin, Phone, Mail, Instagram, Globe, Award } from "lucide-react";
+import { NAV_LINKS } from "@/lib/data";
+import { useContentStore } from "@/lib/content-store";
 
 export default function Footer() {
-  const waLink = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
-    "Halo Dunia Pool & Pond, saya ingin berkonsultasi."
+  const company = useContentStore((s) => s.company);
+
+  const waLink = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+    "Halo " + company.name + ", saya ingin berkonsultasi."
   )}`;
 
   const targetClients = [
@@ -38,10 +41,10 @@ export default function Footer() {
               </div>
               <div>
                 <div className="font-bold text-lg text-white">
-                  Dunia Pool <span className="text-cyan-400">& Pond</span>
+                  {company.name}
                 </div>
                 <div className="text-[10px] text-sky-300">
-                  Sejak 10 Agustus 1997
+                  Sejak {company.establishedDate}
                 </div>
               </div>
             </div>
@@ -57,10 +60,10 @@ export default function Footer() {
               <div>
                 <div className="text-xs text-slate-400">Mitra Resmi</div>
                 <div className="text-sm font-semibold text-white">
-                  {COMPANY.partner}
+                  {company.partner}
                 </div>
                 <div className="text-[10px] text-cyan-300">
-                  {COMPANY.partnerOrigin}
+                  {company.partnerOrigin}
                 </div>
               </div>
             </div>
@@ -112,7 +115,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" />
                 <span className="text-sm text-slate-400">
-                  {COMPANY.currentAddress}
+                  {company.currentAddress}
                 </span>
               </li>
               <li>
@@ -123,38 +126,38 @@ export default function Footer() {
                   className="flex items-center gap-3 text-sm text-slate-400 hover:text-cyan-300 transition-colors"
                 >
                   <Phone className="w-4 h-4 text-cyan-400 shrink-0" />
-                  {COMPANY.phone}
+                  {company.phone}
                 </a>
               </li>
               <li>
                 <a
-                  href={`mailto:${COMPANY.email}`}
+                  href={`mailto:${company.email}`}
                   className="flex items-center gap-3 text-sm text-slate-400 hover:text-cyan-300 transition-colors"
                 >
                   <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
-                  {COMPANY.email}
+                  {company.email}
                 </a>
               </li>
               <li>
                 <a
-                  href={COMPANY.instagramUrl}
+                  href={company.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-sm text-slate-400 hover:text-cyan-300 transition-colors"
                 >
                   <Instagram className="w-4 h-4 text-cyan-400 shrink-0" />
-                  {COMPANY.instagram}
+                  {company.instagram}
                 </a>
               </li>
               <li>
                 <a
-                  href={COMPANY.websiteUrl}
+                  href={company.websiteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-sm text-slate-400 hover:text-cyan-300 transition-colors"
                 >
                   <Globe className="w-4 h-4 text-cyan-400 shrink-0" />
-                  {COMPANY.website}
+                  {company.website}
                 </a>
               </li>
             </ul>
@@ -164,24 +167,13 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500 text-center sm:text-left">
-            &copy; {new Date().getFullYear()} {COMPANY.name}. All Rights
-            Reserved. Didirikan oleh {COMPANY.founder} pada{" "}
-            {COMPANY.establishedDate}.
+            &copy; {new Date().getFullYear()} {company.name}. All Rights
+            Reserved. Didirikan oleh {company.founder} pada{" "}
+            {company.establishedDate}.
           </p>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 text-xs text-slate-500">
-              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              Melayani 34 provinsi seluruh Indonesia
-            </div>
-            {/* Admin access — discreet */}
-            <a
-              href="#admin"
-              className="inline-flex items-center gap-1 text-[10px] text-slate-500 hover:text-cyan-400 transition-colors border border-slate-700 hover:border-cyan-500 rounded-full px-2 py-1"
-              title="Admin Panel"
-            >
-              <Lock className="w-2.5 h-2.5" />
-              Admin
-            </a>
+          <div className="flex items-center gap-2 text-xs text-slate-500">
+            <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+            Melayani 34 provinsi seluruh Indonesia
           </div>
         </div>
       </div>

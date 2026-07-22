@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Waves, MessageCircle } from "lucide-react";
-import { NAV_LINKS, COMPANY } from "@/lib/data";
+import { NAV_LINKS } from "@/lib/data";
+import { useContentStore } from "@/lib/content-store";
 
 export default function Navbar() {
+  const company = useContentStore((s) => s.company);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -16,8 +18,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const waLink = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
-    "Halo Dunia Pool & Pond, saya ingin berkonsultasi tentang proyek kolam renang."
+  const waLink = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+    "Halo " + company.name + ", saya ingin berkonsultasi tentang proyek kolam renang."
   )}`;
 
   return (
@@ -44,14 +46,14 @@ export default function Navbar() {
                   scrolled ? "text-sky-950" : "text-white"
                 }`}
               >
-                Dunia Pool <span className="text-cyan-400">& Pond</span>
+                {company.name}
               </span>
               <span
                 className={`text-[10px] lg:text-xs font-medium transition-colors ${
                   scrolled ? "text-slate-500" : "text-sky-100"
                 }`}
               >
-                Sejak 1997 • Partner Astral Pool
+                Sejak {company.establishedYear} • Partner {company.partner}
               </span>
             </div>
           </a>

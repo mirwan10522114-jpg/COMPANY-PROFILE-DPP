@@ -1,14 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useAuthStore } from "@/lib/auth-store";
 import AdminLogin from "@/components/admin/AdminLogin";
 import AdminDashboard from "@/components/admin/AdminDashboard";
 
 // ============================================================
 // ADMIN PANEL — main controller
-// Listens for hash change (#admin) to open login
+// Access ONLY via URL hash: http://localhost:3000#admin
+// No visible button on the page (hidden access for security)
 // ============================================================
 export default function AdminPanel() {
   const isAuth = useAuthStore((s) => s.isAuthenticated);
@@ -20,9 +21,11 @@ export default function AdminPanel() {
     const checkHash = () => {
       if (window.location.hash === "#admin") {
         if (isAuth) {
+          setShowLogin(false);
           setShowDashboard(true);
         } else {
           setShowLogin(true);
+          setShowDashboard(false);
         }
       } else {
         setShowLogin(false);
@@ -38,7 +41,11 @@ export default function AdminPanel() {
     setShowLogin(false);
     setShowDashboard(false);
     if (window.location.hash === "#admin") {
-      history.replaceState(null, "", window.location.pathname + window.location.search);
+      history.replaceState(
+        null,
+        "",
+        window.location.pathname + window.location.search
+      );
     }
   };
 
@@ -49,8 +56,12 @@ export default function AdminPanel() {
           open={showLogin}
           onClose={closeAll}
           onSuccess={() => {
+            // Auth state already updated via store; trigger re-check
             setShowLogin(false);
-            setShowDashboard(true);
+            // Use rAF to ensure React processes the auth state change first
+            requestAnimationFrame(() => {
+              setShowDashboard(true);
+            });
           }}
         />
       )}

@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight } from "lucide-react";
-import { COMPANY } from "@/lib/data";
+import { useContentStore } from "@/lib/content-store";
 
 export default function CTASection() {
-  const waLink = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
-    "Halo Dunia Pool & Pond, saya ingin mewujudkan kolam impian saya. Mohon info konsultasi."
+  const company = useContentStore((s) => s.company);
+  const waLink = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+    "Halo " + company.name + ", saya ingin mewujudkan kolam impian saya. Mohon info konsultasi."
   )}`;
 
   return (
