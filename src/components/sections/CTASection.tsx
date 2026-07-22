@@ -14,7 +14,7 @@ export default function CTASection() {
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1615922636947-6a1c1c93c1c5?auto=format&fit=crop&w=1920&q=80"
+          src="https://images.unsplash.com/photo-1601823984263-b87b59798b70?auto=format&fit=crop&w=1920&q=80"
           alt="Infinity pool dengan view"
           className="w-full h-full object-cover opacity-30"
         />

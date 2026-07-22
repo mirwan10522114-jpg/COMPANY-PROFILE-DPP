@@ -89,7 +89,7 @@ export const SERVICES: Service[] = [
     ],
     icon: "Droplets",
     image:
-      "https://images.unsplash.com/photo-1615922636947-6a1c1c93c1c5?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1601823984263-b87b59798b70?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "system",
@@ -106,7 +106,7 @@ export const SERVICES: Service[] = [
     ],
     icon: "Settings2",
     image:
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "retail",
@@ -159,7 +159,7 @@ export const TARGET_SEGMENTS: TargetSegment[] = [
     tags: ["Operasional 24/7", "Efisiensi Energi", "Standar Bintang Lima"],
     icon: "Building2",
     image:
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "sekolah-instansi",
@@ -234,7 +234,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Renovasi Kolam Hotel",
     category: "Renovasi",
     image:
-      "https://images.unsplash.com/photo-1615922636947-6a1c1c93c1c5?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1568625365131-079e026a927d?auto=format&fit=crop&w=900&q=80",
     location: "Jakarta",
   },
   {
@@ -242,7 +242,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Kolam Tropis Pribadi",
     category: "Hunian",
     image:
-      "https://images.unsplash.com/photo-1564517701592-88b54547b6b6?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1565711561500-49678a10a63f?auto=format&fit=crop&w=900&q=80",
     location: "Bogor",
   },
   {
@@ -250,7 +250,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Pool Deck Resort",
     category: "Komersial",
     image:
-      "https://images.unsplash.com/photo-1591109188775-9f57903f40a3?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=80",
     location: "Yogyakarta",
   },
   {
@@ -266,7 +266,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Kolam Minimalis Hunian",
     category: "Hunian",
     image:
-      "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=900&q=80",
     location: "Jakarta Selatan",
   },
   {
@@ -274,7 +274,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Renovasi Kolam Villa",
     category: "Renovasi",
     image:
-      "https://images.unsplash.com/photo-1568625365131-079e026a927d?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1606768666853-403c90a981ad?auto=format&fit=crop&w=900&q=80",
     location: "Cisarua",
   },
   {
@@ -282,7 +282,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Perawatan Berkala Kolam",
     category: "Perawatan",
     image:
-      "https://images.unsplash.com/photo-1572177815066-e3ab8599a7cd?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1601823984263-b87b59798b70?auto=format&fit=crop&w=900&q=80",
     location: "Bandung",
   },
   {
@@ -290,7 +290,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Kolam Hotel Bintang Lima",
     category: "Komersial",
     image:
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=900&q=80",
     location: "Surabaya",
   },
   {
@@ -298,7 +298,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: "Kolam Renang Keluarga",
     category: "Hunian",
     image:
-      "https://images.unsplash.com/photo-1628406419844-1c0e9a193c8f?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80",
     location: "Depok",
   },
 ];
@@ -312,6 +312,7 @@ export const LEADER = {
   role: "Founder & Direktur Utama",
   photo:
     "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
+  signature: "Agus Setiawan",
   message:
     "Saya memulai Dunia Pool & Pond pada tahun 1997 dengan satu tekad sederhana: menghadirkan kolam renang yang benar-benar berkualitas di tengah pasar yang saat itu masih minim standar. Lebih dari 25 tahun kemudian, tekad itu tidak pernah berubah — hanya saja sekarang kami melayani seluruh Indonesia, dari Sabang sampai Merauke. Bagi kami, kolam renang bukan sekadar struktur beton dan air. Ia adalah investasi jangka panjang, oase keluarga, dan cerminan standar kualitas sebuah properti. Itulah sebabnya setiap proyek — sekecil apa pun — kami treat dengan keahlian engineering yang sama, mulai dari desain sistem sirkulasi hingga layanan purna jual. Kemitraan kami dengan Astral Pool S.A. Spanyol adalah jembatan untuk membawa standar internasional langsung ke setiap pekerjaan kami. Terima kasih kepada lebih dari 1.000 klien yang telah mempercayakan kolam impian mereka kepada kami. Ini baru permulaan.",
   highlights: [
