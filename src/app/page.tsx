@@ -5,6 +5,7 @@ import LeaderMessage from "@/components/sections/LeaderMessage";
 import Services from "@/components/sections/Services";
 import TargetMarket from "@/components/sections/TargetMarket";
 import Gallery from "@/components/sections/Gallery";
+import Testimonials from "@/components/sections/Testimonials";
 import CTASection from "@/components/sections/CTASection";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
@@ -21,6 +22,7 @@ export default function Home() {
         <Services />
         <TargetMarket />
         <Gallery />
+        <Testimonials />
         <CTASection />
         <Contact />
       </main>

@@ -38,6 +38,7 @@ export const NAV_LINKS = [
   { label: "Layanan", href: "#layanan" },
   { label: "Target Pasar", href: "#target-pasar" },
   { label: "Galeri", href: "#galeri" },
+  { label: "Testimoni", href: "#testimoni" },
   { label: "Kontak", href: "#kontak" },
 ];
 
@@ -321,3 +322,127 @@ export const LEADER = {
     "Mitra resmi Astral Pool S.A. Spanyol",
   ],
 };
+
+// ============================================================
+// TESTIMONIALS — Klien & Proyek Mereka
+// ============================================================
+
+export interface Testimonial {
+  id: number;
+  clientName: string;
+  clientRole: string;
+  clientPhoto: string;
+  projectTitle: string;
+  projectLocation: string;
+  projectType: string;
+  projectImage: string;
+  rating: number;
+  testimonial: string;
+  completionYear: string;
+}
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: 1,
+    clientName: "Budi Hartono",
+    clientRole: "Pemilik Villa",
+    clientPhoto:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+    projectTitle: "Villa Lembang dengan Infinity Pool",
+    projectLocation: "Lembang, Bandung",
+    projectType: "Kolam Hunian",
+    projectImage:
+      "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=900&q=80",
+    rating: 5,
+    testimonial:
+      "Tim Dunia Pool & Pond mengubah villa saya menjadi destinasi liburan keluarga impian. Sistem sirkulasinya sangat efisien — biaya listrik dan perawatan jauh lebih rendah dari ekspektasi. Yang paling saya hargai adalah konsultasi desain sirkulasi yang gratis di awal; ternyata benar-benar membuat perbedaan besar dalam jangka panjang. Setelah 3 tahun, kolam masih sebersih hari pertama.",
+    completionYear: "2022",
+  },
+  {
+    id: 2,
+    clientName: "Siti Rahmawati",
+    clientRole: "General Manager, Grand Resort Bali",
+    clientPhoto:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+    projectTitle: "Pool Resort Bintang Lima",
+    projectLocation: "Ubud, Bali",
+    projectType: "Komersial",
+    projectImage:
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
+    rating: 5,
+    testimonial:
+      "Sebagai resort bintang lima, kami tidak bisa kompromi pada kualitas. Dunia Pool & Pond memahami betul standar operasional 24/7 yang kami butuhkan. Sistem sirkulasi presisi yang mereka rancang menekan biaya energi hampir 30% dibanding kolam lama kami. Tamu selalu memuji kejernihan air. Pekerjaan mereka benar-benar berkelas internasional.",
+    completionYear: "2023",
+  },
+  {
+    id: 3,
+    clientName: "Ir. Hendra Wijaya, MT",
+    clientRole: "Kepala Sekolah SMKN 5",
+    clientPhoto:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+    projectTitle: "Kolam Renang Sekolah Standar Kompetisi",
+    projectLocation: "Bandung Barat",
+    projectType: "Institusi",
+    projectImage:
+      "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=900&q=80",
+    rating: 5,
+    testimonial:
+      "Proyek tender sekolah ini menuntut transparansi penuh dan kepatuhan standar teknis. Dunia Pool & Pond melalui seluruh proses dengan sangat profesional — dokumen lengkap, timeline tepat, dan hasil melampaui spesifikasi. Kolam kami kini digunakan untuk latihan renang kompetisi tingkat provinsi. Investasi yang sangat berharga bagi siswa-siswi kami.",
+    completionYear: "2021",
+  },
+  {
+    id: 4,
+    clientName: "Diana Pratiwi",
+    clientRole: "Marketing Director, Permata Property",
+    clientPhoto:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
+    projectTitle: "Cluster Pool Perumahan Permata Residen",
+    projectLocation: "Depok, Jawa Barat",
+    projectType: "Developer",
+    projectImage:
+      "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80",
+    rating: 5,
+    testimonial:
+      "Sebagai developer multi-unit, konsistensi kualitas adalah segalanya. Dunia Pool & Pond menyelesaikan 12 unit kolam dalam satu cluster kami dengan timeline yang sangat ketat — semua tepat waktu dengan spesifikasi identik. Reaksinya pembeli luar biasa: cluster kami sold out dalam 3 bulan. Kami sudah menjadwalkan kerja sama jangka panjang untuk project berikutnya.",
+    completionYear: "2023",
+  },
+  {
+    id: 5,
+    clientName: "Rizal Mahendra",
+    clientRole: "Owner, The Peak Villa",
+    clientPhoto:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
+    projectTitle: "Renovasi Total Kolam Villa",
+    projectLocation: "Cisarua, Bandung Barat",
+    projectType: "Renovasi",
+    projectImage:
+      "https://images.unsplash.com/photo-1568625365131-079e026a927d?auto=format&fit=crop&w=900&q=80",
+    rating: 5,
+    testimonial:
+      "Kolam villa saya sebelumnya bocor dan sistem sirkulasi kacau. Sudah 2 kontraktor sebelumnya gagal memperbaiki. Dunia Pool & Pond datang, diagnosa akar masalah dengan teliti, dan melakukan renovasi total dalam 6 minggu. Hasilnya? Kolam seperti baru kembali — bahkan lebih baik dari kondisi awal. Profesionalitas mereka luar biasa.",
+    completionYear: "2022",
+  },
+  {
+    id: 6,
+    clientName: "Maya Anggraini",
+    clientRole: "Hotel Operations Manager",
+    clientPhoto:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
+    projectTitle: "Rooftop Pool Hotel Bintang Lima",
+    projectLocation: "Surabaya",
+    projectType: "Komersial",
+    projectImage:
+      "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=900&q=80",
+    rating: 5,
+    testimonial:
+      "Membangun kolam di rooftop dengan keterbatasan struktur bukan pekerjaan mudah, tapi tim Dunia Pool & Pond menyelesaikannya dengan brilian. Desain sistem sirkulasi mereka membuat kolam tetap bersih dengan maintenance minimal. Tamu kami memberikan rating 4.9/5 untuk fasilitas pool. Investasi yang mengangkat reputasi hotel kami.",
+    completionYear: "2023",
+  },
+];
+
+export const TESTIMONIAL_STATS = [
+  { value: "98%", label: "Klien Kembali / Refer", icon: "RefreshCw" },
+  { value: "4.9/5", label: "Rata-rata Kepuasan", icon: "Star" },
+  { value: "1.000+", label: "Klien Terlayani", icon: "Users" },
+  { value: "34", label: "Provinsi Tersebar", icon: "MapPin" },
+];
