@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Quote, CheckCircle2, Award, PenLine } from "lucide-react";
-import { LEADER } from "@/lib/data";
+import { useContentStore } from "@/lib/content-store";
 
 export default function LeaderMessage() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -11,6 +11,7 @@ export default function LeaderMessage() {
     target: sectionRef,
     offset: ["start end", "end start"],
   });
+  const leader = useContentStore((s) => s.leader);
 
   // Parallax effect on photo
   const photoY = useTransform(scrollYProgress, [0, 1], [40, -40]);
@@ -76,8 +77,8 @@ export default function LeaderMessage() {
                 className="relative rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/20 border-4 border-white/10"
               >
                 <img
-                  src={LEADER.photo}
-                  alt={`${LEADER.name} - ${LEADER.role}`}
+                  src={leader.photo}
+                  alt={`${leader.name} - ${leader.role}`}
                   className="w-full aspect-[3/4] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-sky-950/95 via-sky-950/30 to-transparent" />
@@ -98,10 +99,10 @@ export default function LeaderMessage() {
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="text-white">
                     <h3 className="text-2xl font-bold font-serif tracking-tight">
-                      {LEADER.name}
+                      {leader.name}
                     </h3>
                     <p className="text-cyan-300 text-sm mt-1 font-medium tracking-wide">
-                      {LEADER.role}
+                      {leader.role}
                     </p>
                     <div className="mt-3 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full">
                       <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
@@ -153,12 +154,12 @@ export default function LeaderMessage() {
             </motion.div>
 
             <blockquote className="text-sky-50 text-lg lg:text-xl leading-relaxed font-light italic font-serif">
-              {LEADER.message}
+              {leader.message}
             </blockquote>
 
             {/* Highlights */}
             <div className="mt-8 space-y-3">
-              {LEADER.highlights.map((item, idx) => (
+              {leader.highlights.map((item, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: 20 }}
@@ -198,10 +199,10 @@ export default function LeaderMessage() {
                 className="text-3xl lg:text-4xl text-white font-serif italic font-medium tracking-wide"
                 style={{ fontFamily: "var(--font-playfair), serif" }}
               >
-                {LEADER.name}
+                {leader.name}
               </div>
               <div className="text-sky-200 text-sm mt-2 font-medium tracking-wide">
-                {LEADER.role}, Dunia Pool & Pond
+                {leader.role}, Dunia Pool & Pond
               </div>
             </motion.div>
           </motion.div>

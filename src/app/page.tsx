@@ -5,11 +5,13 @@ import LeaderMessage from "@/components/sections/LeaderMessage";
 import Services from "@/components/sections/Services";
 import TargetMarket from "@/components/sections/TargetMarket";
 import Gallery from "@/components/sections/Gallery";
+import Products from "@/components/sections/Products";
 import Testimonials from "@/components/sections/Testimonials";
 import CTASection from "@/components/sections/CTASection";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import FloatingWhatsApp from "@/components/sections/FloatingWhatsApp";
+import AdminPanel from "@/components/admin/AdminPanel";
 
 export default function Home() {
   return (
@@ -22,12 +24,14 @@ export default function Home() {
         <Services />
         <TargetMarket />
         <Gallery />
+        <Products />
         <Testimonials />
         <CTASection />
         <Contact />
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <AdminPanel />
     </div>
   );
 }

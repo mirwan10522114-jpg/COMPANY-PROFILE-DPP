@@ -1,6 +1,6 @@
 "use client";
 
-import { Waves, MapPin, Phone, Mail, Instagram, Globe, Award } from "lucide-react";
+import { Waves, MapPin, Phone, Mail, Instagram, Globe, Award, Lock } from "lucide-react";
 import { COMPANY, NAV_LINKS } from "@/lib/data";
 
 export default function Footer() {
@@ -168,9 +168,20 @@ export default function Footer() {
             Reserved. Didirikan oleh {COMPANY.founder} pada{" "}
             {COMPANY.establishedDate}.
           </p>
-          <div className="flex items-center gap-2 text-xs text-slate-500">
-            <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-            Melayani 34 provinsi seluruh Indonesia
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 text-xs text-slate-500">
+              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+              Melayani 34 provinsi seluruh Indonesia
+            </div>
+            {/* Admin access — discreet */}
+            <a
+              href="#admin"
+              className="inline-flex items-center gap-1 text-[10px] text-slate-500 hover:text-cyan-400 transition-colors border border-slate-700 hover:border-cyan-500 rounded-full px-2 py-1"
+              title="Admin Panel"
+            >
+              <Lock className="w-2.5 h-2.5" />
+              Admin
+            </a>
           </div>
         </div>
       </div>

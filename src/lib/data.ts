@@ -38,6 +38,7 @@ export const NAV_LINKS = [
   { label: "Layanan", href: "#layanan" },
   { label: "Target Pasar", href: "#target-pasar" },
   { label: "Galeri", href: "#galeri" },
+  { label: "Produk", href: "#produk" },
   { label: "Testimoni", href: "#testimoni" },
   { label: "Kontak", href: "#kontak" },
 ];

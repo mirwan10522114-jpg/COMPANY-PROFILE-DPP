@@ -12,6 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { SERVICES, COMPANY } from "@/lib/data";
+import { useContentStore } from "@/lib/content-store";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   HardHat,
@@ -66,8 +67,11 @@ function TiltCard({
 }
 
 export default function Services() {
+  const services = useContentStore((s) => s.services);
+  const company = useContentStore((s) => s.company);
+
   const waLink = (service: string) =>
-    `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
+    `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
       `Halo Dunia Pool & Pond, saya tertarik dengan layanan "${service}". Mohon info lebih lanjut.`
     )}`;
 
@@ -103,7 +107,7 @@ export default function Services() {
 
         {/* Services grid */}
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {SERVICES.map((service, idx) => {
+          {services.map((service, idx) => {
             const Icon = ICON_MAP[service.icon] || HardHat;
             return (
               <motion.div

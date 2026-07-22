@@ -11,6 +11,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { TARGET_SEGMENTS, COMPANY } from "@/lib/data";
+import { useContentStore } from "@/lib/content-store";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Home,
@@ -21,11 +22,14 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
 
 export default function TargetMarket() {
   const [active, setActive] = useState(0);
-  const segment = TARGET_SEGMENTS[active];
-  const Icon = ICON_MAP[segment.icon] || Home;
+  const segments = useContentStore((s) => s.targetSegments);
+  const company = useContentStore((s) => s.company);
+  const safeActive = Math.min(active, Math.max(0, segments.length - 1));
+  const segment = segments[safeActive];
+  const Icon = ICON_MAP[segment?.icon || "Home"] || Home;
 
-  const waLink = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
-    `Halo Dunia Pool & Pond, saya mewakili segmen "${segment.title}" dan ingin berkonsultasi.`
+  const waLink = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+    `Halo Dunia Pool & Pond, saya mewakili segmen "${segment?.title || ""}" dan ingin berkonsultasi.`
   )}`;
 
   return (
@@ -57,7 +61,7 @@ export default function TargetMarket() {
 
         {/* Tab selectors */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
-          {TARGET_SEGMENTS.map((seg, idx) => {
+          {segments.map((seg, idx) => {
             const SegIcon = ICON_MAP[seg.icon] || Home;
             const isActive = idx === active;
             return (
@@ -122,7 +126,7 @@ export default function TargetMarket() {
                     {segment.title}
                   </h3>
                   <p className="text-cyan-300 text-xs">
-                    Segmen {active + 1} dari {TARGET_SEGMENTS.length}
+                    Segmen {safeActive + 1} dari {segments.length}
                   </p>
                 </div>
               </div>

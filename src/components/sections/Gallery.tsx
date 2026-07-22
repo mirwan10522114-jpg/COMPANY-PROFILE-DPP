@@ -5,17 +5,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, MapPin, ZoomIn, Upload, ImageOff, ChevronLeft, ChevronRight } from "lucide-react";
 import { GALLERY_ITEMS, GALLERY_CATEGORIES, COMPANY } from "@/lib/data";
 import type { GalleryItem } from "@/lib/data";
+import { useContentStore } from "@/lib/content-store";
 
 export default function Gallery() {
   const [filter, setFilter] = useState<string>("Semua");
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+  const gallery = useContentStore((s) => s.gallery);
+  const company = useContentStore((s) => s.company);
 
   const filtered =
     filter === "Semua"
-      ? GALLERY_ITEMS
-      : GALLERY_ITEMS.filter((item) => item.category === filter);
+      ? gallery
+      : gallery.filter((item) => item.category === filter);
 
-  const waLink = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
+  const waLink = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
     "Halo Dunia Pool & Pond, saya ingin melihat portfolio lengkap proyek Anda."
   )}`;
 

@@ -16,6 +16,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { TESTIMONIALS, TESTIMONIAL_STATS, COMPANY } from "@/lib/data";
+import { useContentStore } from "@/lib/content-store";
 
 const STATS_ICON_MAP: Record<string, LucideIcon> = {
   RefreshCw,
@@ -28,27 +29,30 @@ export default function Testimonials() {
   const [active, setActive] = useState(0);
   const [direction, setDirection] = useState(1);
   const [autoPlay, setAutoPlay] = useState(true);
+  const testimonials = useContentStore((s) => s.testimonials);
+  const company = useContentStore((s) => s.company);
 
-  const testimonial = TESTIMONIALS[active];
+  const safeActive = testimonials.length > 0 ? Math.min(active, testimonials.length - 1) : 0;
+  const testimonial = testimonials[safeActive];
 
   const goNext = useCallback(() => {
     setDirection(1);
-    setActive((prev) => (prev + 1) % TESTIMONIALS.length);
-  }, []);
+    setActive((prev) => (prev + 1) % testimonials.length);
+  }, [testimonials.length]);
 
   const goPrev = useCallback(() => {
     setDirection(-1);
-    setActive((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  }, []);
+    setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  }, [testimonials.length]);
 
   // Auto-play
   useEffect(() => {
-    if (!autoPlay) return;
+    if (!autoPlay || testimonials.length <= 1) return;
     const interval = setInterval(goNext, 6000);
     return () => clearInterval(interval);
-  }, [autoPlay, goNext, active]);
+  }, [autoPlay, goNext, safeActive, testimonials.length]);
 
-  const waLink = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
+  const waLink = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
     "Halo Dunia Pool & Pond, saya ingin melihat referensi proyek & testimoni klien lebih lengkap."
   )}`;
 
@@ -266,15 +270,15 @@ export default function Testimonials() {
 
           {/* Dots indicator */}
           <div className="flex items-center justify-center gap-2 mt-8">
-            {TESTIMONIALS.map((_, idx) => (
+            {testimonials.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => {
-                  setDirection(idx > active ? 1 : -1);
+                  setDirection(idx > safeActive ? 1 : -1);
                   setActive(idx);
                 }}
                 className={`transition-all rounded-full ${
-                  idx === active
+                  idx === safeActive
                     ? "w-8 h-2 bg-gradient-to-r from-cyan-500 to-sky-600"
                     : "w-2 h-2 bg-sky-200 hover:bg-sky-300"
                 }`}
@@ -286,10 +290,10 @@ export default function Testimonials() {
           {/* Counter */}
           <div className="text-center mt-4 text-sm text-slate-500">
             <span className="font-semibold text-sky-700">
-              {String(active + 1).padStart(2, "0")}
+              {String(safeActive + 1).padStart(2, "0")}
             </span>
             <span className="mx-1">/</span>
-            <span>{String(TESTIMONIALS.length).padStart(2, "0")}</span>
+            <span>{String(testimonials.length).padStart(2, "0")}</span>
             <span className="ml-2 text-xs">Testimoni Klien</span>
           </div>
         </motion.div>

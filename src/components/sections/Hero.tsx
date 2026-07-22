@@ -2,10 +2,13 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle, ChevronDown, Award, MapPin } from "lucide-react";
-import { COMPANY } from "@/lib/data";
+import { useContentStore } from "@/lib/content-store";
 
 export default function Hero() {
-  const waLink = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
+  const hero = useContentStore((s) => s.hero);
+  const company = useContentStore((s) => s.company);
+
+  const waLink = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
     "Halo Dunia Pool & Pond, saya ingin konsultasi gratis tentang proyek kolam renang."
   )}`;
 
@@ -17,7 +20,7 @@ export default function Hero() {
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1920&q=80"
+          src={hero.backgroundImage}
           alt="Kolam renang mewah karya Dunia Pool & Pond"
           className="w-full h-full object-cover"
         />
@@ -41,7 +44,7 @@ export default function Hero() {
           >
             <Award className="w-4 h-4 text-amber-400" />
             <span className="text-sky-50 text-xs sm:text-sm font-medium">
-              Mitra Resmi Astral Pool S.A. • Barcelona, Spanyol
+              {hero.badge}
             </span>
           </motion.div>
 
@@ -52,9 +55,9 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight"
           >
-            Mewujudkan Kolam Impian{" "}
+            {hero.headlinePrefix}{" "}
             <span className="bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent">
-              Sejak 1997
+              {hero.headlineHighlight}
             </span>
           </motion.h1>
 
@@ -65,9 +68,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-6 text-base sm:text-lg lg:text-xl text-sky-100 leading-relaxed max-w-2xl"
           >
-            Spesialis konstruksi, renovasi, perawatan, dan sistem sirkulasi kolam
-            renang dengan standar internasional. Lebih dari 1.000 proyek selesai di
-            34 provinsi seluruh Indonesia — dari rumah pribadi hingga resort bintang lima.
+            {hero.subheadline}
           </motion.p>
 
           {/* CTAs */}
