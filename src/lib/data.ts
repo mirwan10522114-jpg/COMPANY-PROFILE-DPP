@@ -171,7 +171,7 @@ export const TARGET_SEGMENTS: TargetSegment[] = [
     tags: ["Keamanan Tinggi", "Proses Tender", "Transparan"],
     icon: "Landmark",
     image:
-      "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
+      "https://res.cloudinary.com/b2vdhxhf/image/upload/v1784732153/Best_Pool_Cleaning_Tools_for_Clear_Water_lgv4lv.jpg",
   },
   {
     id: "developer",
@@ -313,7 +313,7 @@ export const LEADER = {
   name: "Agus Setiawan",
   role: "Founder & Direktur Utama",
   photo:
-    "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
+    "https://res.cloudinary.com/b2vdhxhf/image/upload/v1784726811/ChatGPT_Image_Jul_23_2026_08_25_38_PM_xalpyn.png",
   signature: "Agus Setiawan",
   message:
     "Saya memulai Dunia Pool & Pond pada tahun 1997 dengan satu tekad sederhana: menghadirkan kolam renang yang benar-benar berkualitas di tengah pasar yang saat itu masih minim standar. Lebih dari 25 tahun kemudian, tekad itu tidak pernah berubah — hanya saja sekarang kami melayani seluruh Indonesia, dari Sabang sampai Merauke. Bagi kami, kolam renang bukan sekadar struktur beton dan air. Ia adalah investasi jangka panjang, oase keluarga, dan cerminan standar kualitas sebuah properti. Itulah sebabnya setiap proyek — sekecil apa pun — kami treat dengan keahlian engineering yang sama, mulai dari desain sistem sirkulasi hingga layanan purna jual. Kemitraan kami dengan Astral Pool S.A. Spanyol adalah jembatan untuk membawa standar internasional langsung ke setiap pekerjaan kami. Terima kasih kepada lebih dari 1.000 klien yang telah mempercayakan kolam impian mereka kepada kami. Ini baru permulaan.",
